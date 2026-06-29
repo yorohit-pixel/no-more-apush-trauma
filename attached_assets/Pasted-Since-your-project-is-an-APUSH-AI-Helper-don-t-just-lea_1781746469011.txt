@@ -1,0 +1,210 @@
+Since your project is an **APUSH AI Helper**, don't just leave it as a basic chatbot. Turn it into something that actually solves a problem for APUSH students.
+
+Here are upgrades you can add in Replit:
+
+### 1. APUSH Study Modes
+
+Instead of one chat box, add:
+
+* 📚 Topic Explainer
+
+  * Explains any APUSH topic
+  * Example: "Explain the Market Revolution"
+
+* 📝 SAQ Generator
+
+  * Creates APUSH-style Short Answer Questions
+
+* 📖 DBQ Helper
+
+  * Helps brainstorm DBQ documents and outside evidence
+
+* 🎯 Multiple Choice Practice
+
+  * Generates APUSH MCQs with explanations
+
+* ⚡ LEQ Planner
+
+  * Creates thesis statements and essay outlines
+
+---
+
+### 2. Timeline Feature
+
+Students struggle with chronology.
+
+Add:
+
+* Search any year (1491-Present)
+* Shows important events
+* Interactive timeline
+
+Example:
+
+```
+1865
+
+→ Civil War Ends
+→ Reconstruction Begins
+→ Freedmen's Bureau Established
+```
+
+---
+
+### 3. APUSH Unit Navigation
+
+Create buttons for all APUSH units:
+
+* Unit 1: 1491-1607
+* Unit 2: 1607-1754
+* Unit 3: 1754-1800
+* Unit 4: 1800-1848
+* Unit 5: 1844-1877
+* Unit 6: 1865-1898
+* Unit 7: 1890-1945
+* Unit 8: 1945-1980
+* Unit 9: 1980-Present
+
+Students click instead of typing.
+
+---
+
+### 4. Flashcard Generator
+
+User enters:
+
+```
+Unit 5
+```
+
+AI creates:
+
+Front:
+
+```
+What was Manifest Destiny?
+```
+
+Back:
+
+```
+The belief that America should expand across the continent.
+```
+
+---
+
+### 5. Exam Simulator
+
+Generate:
+
+* 55 MCQs
+* SAQs
+* LEQ prompts
+* DBQ prompts
+
+Track score automatically.
+
+This makes the project much more impressive.
+
+---
+
+### 6. Source-Based Answers
+
+One huge improvement:
+
+When the AI explains something, include:
+
+**Sources**
+
+* Britannica
+* Library of Congress
+* National Archives
+
+This makes it look more academic and reliable.
+
+---
+
+### 7. APUSH Performance Dashboard
+
+Track:
+
+* Questions attempted
+* Accuracy %
+* Strongest unit
+* Weakest unit
+
+Students love seeing progress.
+
+---
+
+### 8. User Accounts
+
+Allow:
+
+* Sign up
+* Save progress
+* Save flashcards
+* Save practice tests
+
+This immediately makes it look more like a real educational product.
+
+---
+
+### 9. AI Study Plan Generator
+
+User enters:
+
+```
+APUSH Exam in 45 days
+```
+
+AI generates:
+
+Week 1:
+
+* Unit 1
+* Unit 2
+
+Week 2:
+
+* Unit 3
+* Unit 4
+
+etc.
+
+---
+
+### 10. College-Level Upgrade
+
+If you're thinking about college applications, the strongest improvement would be:
+
+**RAG (Retrieval-Augmented Generation)**
+
+Instead of the AI making things up:
+
+* Upload APUSH notes
+* Upload AMSCO chapters
+* Upload review guides
+* AI searches those documents before answering
+
+That turns it from:
+
+> "A chatbot"
+
+into
+
+> "An AI tutoring system trained on APUSH materials"
+
+which sounds much more impressive on applications.
+
+---
+
+If I were in your position, I'd focus on these 5 first:
+
+1. Multiple Choice Generator
+2. SAQ/DBQ/LEQ Helper
+3. Flashcard Generator
+4. Progress Dashboard
+5. Source-based answers
+
+Those five upgrades would make your APUSH Helper look like a real educational AI product rather than just a course project.

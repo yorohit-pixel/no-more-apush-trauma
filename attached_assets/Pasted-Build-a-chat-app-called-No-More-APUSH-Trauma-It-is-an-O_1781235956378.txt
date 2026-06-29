@@ -1,0 +1,29 @@
+Build a chat app called "No More APUSH Trauma". It is an OpenAI assistant named "Hamilton_Bot". Unzip `replit_project.zip` first. Pick whichever stack you think will produce the nicest-looking app. Python or TypeScript/React are both fine.
+
+ABOUT THE CORPUS: The complete 2025 AP US History (APUSH) exam database containing all Document-Based Questions (DBQs), Short-Answer Questions (SAQs), and Long-Essay Questions (LEQs). It also includes full text access to the McGraw-Hill APUSH textbook and 'American History: Exploring the Past' by James A. Henretta. (already lives in an OpenAI vector store; load it and keep it as-is, do not rebuild the corpus.)
+WELCOME MESSAGE: Conquer your DBQs, master your CCOT, and stop stressing over the exam. Ask me anything about APUSH eras, essays, or rubrics!
+HOW IT SHOULD WORK: DBQ/SAQ/LEQ essay scoring and feedback, historical evidence citations from Henretta and McGraw-Hill, contextualization builders, thesis statement generators, dark mode, and comprehensive content review modules mapping to all 9 APUSH Historical Periods (Period 1: 1491–1607, Period 2: 1607–1754, Period 3: 1754–1800, Period 4: 1800–1848, Period 5: 1844–1877, Period 6: 1865–1898, Period 7: 1890–1945, Period 8: 1945–1980, and Period 9: 1980–Present).
+VISUAL STYLE: Patriotic Retro / Independence Hall style (Parchment backgrounds, deep federal blue text, and dark crimson/gold accents for a classic constitutional feel)
+EXTRA FEATURES: Suggested starter prompts for DBQ breakdown, interactive timeline filter for the 9 periods, random history trivia mode
+
+ASSISTANT SYSTEM PROMPT (use verbatim):
+You are an expert AI AP US History (APUSH) tutor and analyst. Your goal is to provide comprehensive course support—including content review, exam prep strategies, and essay guidance—while specifically utilizing the provided text corpus to help students identify deep thematic connections, causal relationships, and continuity or change over time (CCOT) across all nine APUSH periods.
+
+VISUAL POLISH. Aim for a polished, product-quality UI:
+- Hero section at the top with the assistant's name and a one-line tagline.
+- 3 to 4 suggested starter questions the user can click.
+- Style citations as expandable references, not raw text.
+- Use the Inter font and a mobile-friendly layout.
+- Make it feel like a real product, not a default chat demo.
+
+IMPLEMENTATION. Must do:
+- Read the OpenAI API key from environment variables. NEVER hardcode it.
+  Python: `os.environ["OPENAI_API_KEY"]`
+  Node/TypeScript: `process.env.OPENAI_API_KEY`
+  Replit's Secrets are exposed as env vars, so this is how the app reads the key.
+- Use the OpenAI Assistants API with the `file_search` tool.
+- OpenAI SDK v2 API paths: `client.vector_stores` is TOP-LEVEL, not `client.beta.vector_stores`. Assistants and threads are still under `client.beta` (`client.beta.assistants`, `client.beta.threads`).
+- Load `vector_store_id` from `config.json` and keep this vector store attached and unchanged — it already holds the full corpus, so do not rebuild or re-upload the corpus.
+- Let users upload their own documents in the chat. Upload each file to OpenAI with `purpose="assistants"`, then attach it to that user's message using `attachments=[{"file_id": file_id, "tools": [{"type": "file_search"}]}]`. The Assistants API then searches BOTH the existing corpus vector store and the uploaded file, so the original corpus is always used and uploads stay scoped to that conversation. `file_search` reads text documents (PDF, txt, docx, md), not images.
+- At startup, in a background thread: create a new assistant using the assistant name and system prompt above, then attach the existing `vector_store_id`. This lets the app start immediately for Replit's health check.
+- Chat interface: streaming responses with citations.

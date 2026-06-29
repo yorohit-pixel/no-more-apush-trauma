@@ -1,0 +1,22 @@
+Please implement a frontend-only visual and systemic feature update for the "No More APUSH Trauma" app. The goal is to integrate aesthetic, non-textbook style educational visuals, interactive tools, thematic structuring, and external video recommendations directly into the chatbot’s output responses, leaving the main layout completely intact.
+
+Here are the specific requirements:
+
+1. Dynamic Visuals in Bot Responses (Mermaid.js Integration):
+- Install and integrate `mermaid.js` (or a similar lightweight rendering library) so Hamilton.AI can dynamically generate clean, aesthetic diagrams directly inside its chat bubbles.
+- When answering historical queries, the bot should automatically render visual assets:
+  * Timelines: Horizontal or vertical flowcharts mapping out key events.
+  * Connection Webs/Mind Maps: Sleek nodes linking shifting historical contexts, causes, and effects.
+  * Comparison Charts & Venn Diagrams: Visual breakdowns comparing eras, political parties, or competing ideologies (e.g., Federalists vs. Anti-Federalists).
+- Ensure these diagrams match the existing clean, modern theme of the app. Avoid rigid, blocky, old-school textbook-style clip art or tables; use minimalist, sleek styling.
+
+2. Interactive "Creative Date Memorization" Tool:
+- Build an interactive, inline widget or visual component that renders within a chat response whenever a user asks for help memorizing dates.
+- Instead of raw flashcards, use creative memory techniques:
+  * "Anchor Dates": A timeline component showing how minor events anchor visually to major turning-point years (e.g., 1776, 1800, 1860, 1914, 1945).
+  * Narrative Chronology: A clean, step-by-step visual chain where each date triggers the next event like a domino effect.
+
+3. System Prompt Update (Thematic Binding & YouTube Suggestions):
+- Update the backend system prompt/agent instructions for Hamilton.AI to strictly enforce the following response structures:
+  * APUSH Thematic Integration: Every response must implicitly or explicitly connect the historical topic back to at least one overarching APUSH theme (NAT, WXT, GEO, MIG, PCE, WOR, ARC, SOC).
+  * Relevant Video Recommendations: At the very end of historical or era summaries, the bot should include a clean, styled recommendation for high-quality APUSH YouTube
