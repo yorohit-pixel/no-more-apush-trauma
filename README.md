@@ -1,5 +1,7 @@
 # No More APUSH Trauma 🏛️
 
+URL to App: https://apush-trauma-relief--RohitKrish1.replit.app
+
 An AI-powered AP US History tutor built with React, Express, and the OpenAI Assistants API. Features a streaming chat interface, AI-generated flashcards, practice exams, a performance dashboard, and a personalized study plan generator — all styled in a patriotic parchment/navy theme.
 
 ![Hamilton.AI](https://img.shields.io/badge/Hamilton.AI-AP%20US%20History%20Tutor-1a3a6b?style=flat-square)
