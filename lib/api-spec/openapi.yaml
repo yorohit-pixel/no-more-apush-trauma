@@ -1,0 +1,192 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: No More APUSH Trauma API
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: chat
+    description: Chat operations
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  /chat/assistant:
+    get:
+      operationId: getAssistant
+      tags: [chat]
+      summary: Get assistant info
+      description: Returns assistant name, welcome message, and period info
+      responses:
+        "200":
+          description: Assistant info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AssistantInfo"
+
+  /chat/threads:
+    post:
+      operationId: createThread
+      tags: [chat]
+      summary: Create a new conversation thread
+      responses:
+        "201":
+          description: Thread created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Thread"
+
+  /chat/threads/{threadId}/messages:
+    post:
+      operationId: sendMessage
+      tags: [chat]
+      summary: Send a message and stream the assistant response
+      parameters:
+        - name: threadId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MessageInput"
+      responses:
+        "200":
+          description: Streamed SSE response
+          content:
+            text/event-stream:
+              schema:
+                type: string
+
+  /chat/threads/{threadId}/files:
+    post:
+      operationId: uploadFile
+      tags: [chat]
+      summary: Upload a file to attach to this conversation
+      parameters:
+        - name: threadId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: File uploaded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UploadedFile"
+
+  /chat/trivia:
+    get:
+      operationId: getTrivia
+      tags: [chat]
+      summary: Get a random APUSH trivia question
+      responses:
+        "200":
+          description: Trivia question
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TriviaQuestion"
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+
+    AssistantInfo:
+      type: object
+      required: [name, welcomeMessage, periods, starterPrompts]
+      properties:
+        name:
+          type: string
+        welcomeMessage:
+          type: string
+        periods:
+          type: array
+          items:
+            $ref: "#/components/schemas/HistoricalPeriod"
+        starterPrompts:
+          type: array
+          items:
+            type: string
+
+    HistoricalPeriod:
+      type: object
+      required: [number, name, years]
+      properties:
+        number:
+          type: integer
+        name:
+          type: string
+        years:
+          type: string
+        themes:
+          type: array
+          items:
+            type: string
+
+    Thread:
+      type: object
+      required: [threadId]
+      properties:
+        threadId:
+          type: string
+
+    MessageInput:
+      type: object
+      required: [content]
+      properties:
+        content:
+          type: string
+        fileId:
+          type: ["string", "null"]
+
+    UploadedFile:
+      type: object
+      required: [fileId, filename]
+      properties:
+        fileId:
+          type: string
+        filename:
+          type: string
+
+    TriviaQuestion:
+      type: object
+      required: [question, answer, period, year]
+      properties:
+        question:
+          type: string
+        answer:
+          type: string
+        period:
+          type: integer
+        year:
+          type: string
